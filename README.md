@@ -1,70 +1,132 @@
-# Getting Started with Create React App
+# Exam Hall Seat Arrangement System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Automated exam hall seating arrangement with genetic algorithm optimization.
 
-## Available Scripts
+## Features
+- ✅ Smart seating arrangement (prevents same branch adjacency)
+- ✅ Automatic invigilator allocation
+- ✅ Room & student conflict detection
+- ✅ Exam duration tracking with auto-completion
+- ✅ CSV import/export
+- ✅ Firebase backend with emulator support
 
-In the project directory, you can run:
+## Tech Stack
+- React + Vite
+- Firebase (Firestore + Auth)
+- Tailwind CSS
+- Genetic Algorithm
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Setup Instructions
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
+- Node.js (v18+)
+- Git
+- Firebase CLI
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository**
+```bash
+git clone https://github.com/RylVishal/Exam-Hall-Seat-Arrangement.git
+cd Exam-Hall-Seat-Arrangement
+```
 
-### `npm run build`
+2. **Install dependencies**
+```bash
+npm install
+npm install -g firebase-tools
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Setup environment variables**
+```bash
+# Copy .env.example to .env
+cp .env.example .env
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# The .env file is already configured with Firebase credentials
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Login to Firebase**
+```bash
+firebase login
+```
 
-### `npm run eject`
+5. **Run the project**
+```bash
+npm run dev:all
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This will start:
+- Vite dev server: http://localhost:5173
+- Firebase Emulator UI: http://localhost:4000
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Alternative (Run separately)
+```bash
+# Terminal 1 - Firebase Emulators
+firebase emulators:start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Terminal 2 - Vite Dev Server
+npm run dev
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 📝 Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Add Students**: Import CSV or add manually
+2. **Add Staff**: Register invigilators
+3. **Add Rooms**: Configure exam halls with capacity
+4. **Schedule Exam**: Set date, time, duration, and branches
+5. **Generate Allocation**: Click to auto-assign seats
+6. **Export**: Download seating arrangements as CSV
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 🔧 Troubleshooting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Port already in use
+```bash
+# Windows
+netstat -ano | findstr :8080
+taskkill /PID <PID> /F
 
-### Analyzing the Bundle Size
+# Mac/Linux
+lsof -ti:8080 | xargs kill -9
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Firebase login issues
+```bash
+firebase logout
+firebase login
+```
 
-### Making a Progressive Web App
+### Dependencies issues
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 📦 Project Structure
+```
+hall-arrangement/
+├── src/
+│   ├── components/       # React components
+│   ├── firebase/         # Firebase config & helpers
+│   ├── algorithms/       # Genetic algorithm
+│   └── utils/           # CSV helpers
+├── .env                 # Environment variables (not in git)
+├── .env.example         # Example env file
+├── firebase.json        # Firebase config
+└── package.json         # Dependencies
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 🤝 Contributing
+Pull requests are welcome!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📄 License
+MIT
